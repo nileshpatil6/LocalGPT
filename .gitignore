@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# Uploaded documents and embeddings (user data, not source code)
+uploaded_files/
+
+# Junk
+*.zip
+unzipped/
+dataframe.csv
+backup
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Claude Code local settings
+.claude/

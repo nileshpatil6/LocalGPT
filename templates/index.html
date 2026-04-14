@@ -1,0 +1,116 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>LawGPT - AI Document Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-robot"></i> LawGPT</h1>
+                <p>Your AI-powered document assistant</p>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar - Resources -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-folder"></i> Resources</h2>
+                    <button id="upload-btn" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload PDF
+                    </button>
+                </div>
+                
+                <div class="file-list" id="file-list">
+                    <div class="empty-state" id="empty-state">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>No documents uploaded yet</p>
+                        <small>Upload your first PDF to get started</small>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Chat Area -->
+            <main class="chat-area">
+                <div class="chat-header">
+                    <h2><i class="fas fa-comments"></i> Chat</h2>
+                    <button id="clear-chat" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i> Clear History
+                    </button>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-message">
+                        <div class="bot-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm your AI document assistant. Upload some PDFs and ask me questions about their content.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="input-container">
+                        <input type="text" id="question-input" placeholder="Ask a question about your documents..." disabled>
+                        <button id="send-btn" class="btn btn-primary" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-upload"></i> Upload PDF Document</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="file-input-area">
+                        <input type="file" id="pdf-input" name="pdf" accept=".pdf" style="display: none;">
+                        <div class="file-drop-zone" id="file-drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag and drop your PDF here or click to browse</p>
+                            <small>Only PDF files are supported</small>
+                        </div>
+                    </div>
+                    <div class="selected-file" id="selected-file" style="display: none;">
+                        <i class="fas fa-file-pdf"></i>
+                        <span id="file-name"></span>
+                        <button type="button" id="remove-file" class="btn-link">Remove</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal">Cancel</button>
+                <button type="submit" form="upload-form" class="btn btn-primary" id="upload-submit" disabled>
+                    <i class="fas fa-upload"></i> Upload
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
